@@ -34,7 +34,7 @@ class LinkedList {
             index--;
             iterator = iterator.next;
         }
-        return iterator ? iterator.data : null;
+        return iterator && index >= 0 ? iterator.data : null;
     }
 
     insertAt(index, data) {
@@ -73,7 +73,7 @@ class LinkedList {
     }
 
     deleteAt(index) {
-        if (index >= this.length) {
+        if (index >= this.length || index < 0) {
             return this;
         }
         let iterator = this._head;
@@ -91,6 +91,7 @@ class LinkedList {
         } else {
             this._tail = iterator.prev;
         }
+        this.length--;
         return this;
     }
 
